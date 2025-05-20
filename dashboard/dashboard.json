@@ -1,0 +1,615 @@
+[
+    {
+        "id": "f587050929f1d3a6",
+        "type": "tab",
+        "label": "Flujo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "inject-sound",
+        "type": "inject",
+        "z": "f587050929f1d3a6",
+        "name": "Simulate Sound",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Go",
+        "payloadType": "str",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "set-action"
+            ]
+        ]
+    },
+    {
+        "id": "set-action",
+        "type": "change",
+        "z": "f587050929f1d3a6",
+        "name": "Set Action",
+        "rules": [
+            {
+                "t": "set",
+                "p": "action",
+                "pt": "msg",
+                "to": "Go",
+                "tot": "str"
+            }
+        ],
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "ui-sound",
+                "ui-action",
+                "ui-log-sound",
+                "ui-log-action"
+            ]
+        ]
+    },
+    {
+        "id": "ui-sound",
+        "type": "ui_text",
+        "z": "f587050929f1d3a6",
+        "group": "group1",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Sound Detected",
+        "label": "🎤 Sound detected:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 650,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ui-action",
+        "type": "ui_text",
+        "z": "f587050929f1d3a6",
+        "group": "group1",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "Actual Action",
+        "label": "🚗 Actual action:",
+        "format": "{{msg.action}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 650,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ui-log-sound",
+        "type": "ui_text",
+        "z": "f587050929f1d3a6",
+        "group": "group2",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Log Sound",
+        "label": "🎤 Sound detected:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ui-log-action",
+        "type": "ui_text",
+        "z": "f587050929f1d3a6",
+        "group": "group2",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "Log Action",
+        "label": "🚗 Actual action:",
+        "format": "{{msg.action}}",
+        "layout": "row-spread",
+        "x": 650,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "manual-go",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Go",
+        "group": "group3",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Go",
+        "tooltip": "",
+        "color": "#ffffff",
+        "bgcolor": "#28a745",
+        "className": "",
+        "icon": "fa-play",
+        "payload": "go",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [
+                "b345175c497d6b0b"
+            ]
+        ]
+    },
+    {
+        "id": "manual-back",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Backwards",
+        "group": "group3",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Backwards",
+        "tooltip": "",
+        "color": "#ffffff",
+        "bgcolor": "#dc3545",
+        "className": "",
+        "icon": "fa-arrow-down",
+        "payload": "backwards",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 150,
+        "y": 980,
+        "wires": [
+            [
+                "b345175c497d6b0b"
+            ]
+        ]
+    },
+    {
+        "id": "manual-stop",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Stop",
+        "group": "group3",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "stop",
+        "tooltip": "",
+        "color": "#fff",
+        "bgcolor": "#e60000",
+        "className": "",
+        "icon": "fa-stop",
+        "payload": "stop",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 130,
+        "y": 940,
+        "wires": [
+            [
+                "b345175c497d6b0b"
+            ]
+        ]
+    },
+    {
+        "id": "battery-gauge",
+        "type": "ui_gauge",
+        "z": "f587050929f1d3a6",
+        "name": "Battery",
+        "group": "group4",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "gtype": "donut",
+        "title": "Car battery",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 100,
+        "colors": [
+            "#ff0000",
+            "#f7e317",
+            "#00ff00"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 700,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "inject-battery",
+        "type": "inject",
+        "z": "f587050929f1d3a6",
+        "name": "Simulate Battery",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "70",
+        "payloadType": "num",
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "battery-gauge"
+            ]
+        ]
+    },
+    {
+        "id": "1a5d5f8e3b43462b",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Faster",
+        "group": "group3",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Faster",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "faster",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 130,
+        "y": 860,
+        "wires": [
+            [
+                "b345175c497d6b0b"
+            ]
+        ]
+    },
+    {
+        "id": "88f35b966500d014",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Slower",
+        "group": "group3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Slower",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "slower",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 130,
+        "y": 900,
+        "wires": [
+            [
+                "b345175c497d6b0b"
+            ]
+        ]
+    },
+    {
+        "id": "b345175c497d6b0b",
+        "type": "function",
+        "z": "f587050929f1d3a6",
+        "name": "Adjust Value",
+        "func": "var mode = flow.get('mode') || 'manual';\nvar currentValue = flow.get('currentValue') || 0;\n\nif (mode !== 'manual') {\n    return null;\n}\nif (msg.payload === 'faster') {\n    if(currentValue <0){\n        currentValue+=0;\n    } else {\n        currentValue += 10; \n    }\n} else if (msg.payload === 'slower') {\n    if (currentValue <= 0) {\n        currentValue = 0;\n    } else {\n        currentValue -= 10;\n    }\n} else if (msg.payload === 'stop') {\n    currentValue = 0;\n} else if (msg.payload === 'go') {\n    currentValue = 30;\n} else if(msg.payload==='backwards'){\n    currentValue = -20;\n}else {\n    return null;\n}\n\nflow.set('currentValue', currentValue);\nmsg.payload = currentValue;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 840,
+        "wires": [
+            [
+                "9287ca1d86bcdeae"
+            ]
+        ]
+    },
+    {
+        "id": "9287ca1d86bcdeae",
+        "type": "ui_gauge",
+        "z": "f587050929f1d3a6",
+        "name": "Velocity",
+        "group": "group5",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "Velocidad",
+        "format": "{{msg.payload}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 760,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "3c4d3cf89bc84506",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "",
+        "group": "a05272f7625fb021",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Toggle Mode",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "toggle_mode",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 1180,
+        "wires": [
+            [
+                "1c3735ba132ade5c"
+            ]
+        ]
+    },
+    {
+        "id": "1c3735ba132ade5c",
+        "type": "function",
+        "z": "f587050929f1d3a6",
+        "name": "Change Mode",
+        "func": "var mode = flow.get('mode') || 'manual';\n\nif (msg.payload === 'toggle_mode') {\n    mode = (mode === 'manual') ? 'voice' : 'manual';\n    flow.set('mode', mode);\n    msg.payload = mode;\n    return msg;\n}\n\nreturn null;\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1180,
+        "wires": [
+            [
+                "8c26839db4bf18f3"
+            ]
+        ]
+    },
+    {
+        "id": "8c26839db4bf18f3",
+        "type": "ui_text",
+        "z": "f587050929f1d3a6",
+        "group": "a05272f7625fb021",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Mode",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 500,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "09f7ee60dc6c5868",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Left",
+        "group": "group3",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Left",
+        "tooltip": "",
+        "color": "black",
+        "bgcolor": "yellow",
+        "className": "",
+        "icon": "",
+        "payload": "left",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "bde7e6faf5adc94e"
+            ]
+        ]
+    },
+    {
+        "id": "09487624f68077e8",
+        "type": "ui_button",
+        "z": "f587050929f1d3a6",
+        "name": "Right",
+        "group": "group3",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Right",
+        "tooltip": "",
+        "color": "black",
+        "bgcolor": "yellow",
+        "className": "",
+        "icon": "",
+        "payload": "right",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "bde7e6faf5adc94e"
+            ]
+        ]
+    },
+    {
+        "id": "7e344ef3abc0b5da",
+        "type": "ui_slider",
+        "z": "f587050929f1d3a6",
+        "name": "Steer Value",
+        "label": "Steer",
+        "tooltip": "",
+        "group": "group5",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "topicType": "str",
+        "min": 50,
+        "max": 140,
+        "step": 1,
+        "className": "",
+        "x": 710,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bde7e6faf5adc94e",
+        "type": "function",
+        "z": "f587050929f1d3a6",
+        "name": "function 1",
+        "func": "var steer = context.get('steer') || 90;\n\nif (msg.payload === 'right') {\n    if (steer + 5 <= 140) {\n        steer += 5;\n    }\n} else if (msg.payload === 'left') {\n    if (steer - 5 >= 50) {\n        steer -= 5;\n    }\n}\n\ncontext.set('steer', steer);\nmsg.payload = steer;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "7e344ef3abc0b5da"
+            ]
+        ]
+    },
+    {
+        "id": "group1",
+        "type": "ui_group",
+        "name": "Actual action",
+        "tab": "tab1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "group2",
+        "type": "ui_group",
+        "name": "Logs",
+        "tab": "tab1",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "group3",
+        "type": "ui_group",
+        "name": "Manual panel",
+        "tab": "tab1",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "group4",
+        "type": "ui_group",
+        "name": "Car battery",
+        "tab": "tab1",
+        "order": 4,
+        "disp": true,
+        "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "group5",
+        "type": "ui_group",
+        "name": "Velocity",
+        "tab": "tab1",
+        "order": 5,
+        "disp": true,
+        "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "a05272f7625fb021",
+        "type": "ui_group",
+        "name": "Modes",
+        "tab": "tab1",
+        "order": 6,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "tab1",
+        "type": "ui_tab",
+        "name": "Smart Car Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
